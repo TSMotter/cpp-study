@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 // Exploring the concept of overloading
+// swap 2 integers
 void swap(int *var1, int *var2)
 {
   int temp = *var1;
@@ -10,6 +11,7 @@ void swap(int *var1, int *var2)
   *var2 = temp;
 }
 
+// swap 2 pointers
 void swap(int **var1, int **var2)
 {
   int *temp = *var1;
