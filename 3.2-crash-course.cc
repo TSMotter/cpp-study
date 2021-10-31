@@ -5,7 +5,7 @@
 class Foo_c
 {
   public:
-    // Default ctor
+    // Default ctor (initialization list)
     Foo_c (int argc = 0) : x(argc)
     {
       std::cout << "Default ctor called" << std::endl;
