@@ -1,4 +1,6 @@
-// Course available @ https://github.com/rougier/CPP-Crash-Course
+/*
+  Course available @ https://github.com/rougier/CPP-Crash-Course
+*/
 
 #include <iostream>
 

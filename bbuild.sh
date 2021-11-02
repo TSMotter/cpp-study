@@ -1,0 +1,2 @@
+./cclang-formatter.sh
+make

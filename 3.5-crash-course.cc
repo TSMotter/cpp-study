@@ -1,24 +1,29 @@
-// Course available @ https://github.com/rougier/CPP-Crash-Course
+/*
+  Course available @ https://github.com/rougier/CPP-Crash-Course
+
+  Is is possible to write something like foo.method1().method2() ?
+*/
 
 #include <iostream>
 
 class Animal
 {
-  public:
-    Animal()
-    {}
-  
-    void Move()
-    {
-      std::cout << "I'm a moving animal" << std::endl;
-    }
+ public:
+  Animal()
+  {
+  }
 
-    // This method returns a reference to an object, 
-    // so yes, it's possible to do foo.method1().method2()
-    Animal &Dummy (void)
-    {
-      return *this;
-    }
+  void Move()
+  {
+    std::cout << "I'm a moving animal" << std::endl;
+  }
+
+  // This method returns a reference to an object,
+  // so yes, it's possible to do foo.method1().method2()
+  Animal &Dummy(void)
+  {
+    return *this;
+  }
 };
 
 int main(int argc, char **argv)

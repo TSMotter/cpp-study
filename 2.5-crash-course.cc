@@ -1,4 +1,8 @@
-// Course available @ https://github.com/rougier/CPP-Crash-Course
+/*
+  Course available @ https://github.com/rougier/CPP-Crash-Course
+
+  Write a const correct division function.
+*/
 
 #include <iostream>
 #include <cassert>
@@ -6,7 +10,7 @@
 float my_div(const int num, const int den)
 {
   assert(den != 0);
-  return (num/den);
+  return (num / den);
 }
 
 int main(int argc, char **argv)
