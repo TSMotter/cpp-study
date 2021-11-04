@@ -1,2 +1,13 @@
 .vscode/*
-*.o
+
+# ignore everything
+*
+
+# unignore any file with a <.c> on their name (useful for c, c++ source files)
+!*.c*
+
+# unignore any file with a <.h> on their name (useful for c, c++ header files)
+!*.h*
+
+# unignore specifically the makefile
+!makefile

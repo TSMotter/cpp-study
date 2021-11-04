@@ -24,7 +24,7 @@ all: $(TARGETS)
 define template
 $(1): $(1).cc
 	@echo "Building $$@... "
-	@$(CXX) $(1).cc $(CXXFLAGS) -o $$@.o
+	@$(CXX) $(1).cc $(CXXFLAGS) -o $$@
 endef
 $(foreach target,$(TARGETS),$(eval $(call template,$(target))))
 
