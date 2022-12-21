@@ -1,8 +1,12 @@
-# run cland formatter
-./cclang-formatter.sh
+#!/usr/bin/env bash
 
-# delete all txt files
-find . -name "*.txt" -type f -delete
+source cclang-formatter.sh
 
-# build all source files (see makefile)
-make
+rm -rf build
+cmake -S . -B build -D TARGET_GROUP=$1
+cmake --build build
+
+if [[ $2 == "run" ]]; then
+  echo "Will run the application now..."
+  ./build/$1/$1
+fi
