@@ -8,5 +8,5 @@ cmake --build build
 
 if [[ $2 == "run" ]]; then
   echo "Will run the application now..."
-  ./build/$1/$1
+  ./build/$1/$(basename "$1")
 fi
