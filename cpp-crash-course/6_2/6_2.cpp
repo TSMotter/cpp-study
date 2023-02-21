@@ -22,99 +22,99 @@
 */
 class Foo
 {
- public:
-  Foo(const char* file_name) : filename(file_name)
-  {
-    std::cout << "Default ctor called" << std::endl;
-    close();
-  }
-
-  ~Foo()
-  {
-    std::cout << "Default dtor called" << std::endl;
-    close();
-  }
-
-  void write(const char* s)
-  {
-    std::cout << "Writing: " << s << std::endl;
-    File.open(filename, std::ofstream::out);
-    File << s;
-    close();
-  }
-
-  void read_print(void)
-  {
-    std::cout << "Reading: ";
-    File.open(filename, std::ofstream::in);
-    while (true)
+   public:
+    Foo(const char* file_name) : filename(file_name)
     {
-      if (File.eof())
-      {
-        std::cout << std::endl;
-        break;
-      }
-      File >> _pchar;
-      std::cout << _pchar << " ";
+        std::cout << "Default ctor called" << std::endl;
+        close();
     }
-    close();
-  }
 
-  void read(void)
-  {
-    File.open(filename, std::ofstream::in);
-    std::string temp;
-    while (true)
+    ~Foo()
     {
-      if (File.eof())
-      {
-        std::cout << std::endl;
-        break;
-      }
-      File >> temp;
-      _pchar.append(temp);
-      _pchar.append(" ");
+        std::cout << "Default dtor called" << std::endl;
+        close();
     }
-    close();
-  }
 
-  friend std::ostream& operator<<(std::ostream& output, Foo& obj)
-  {
-    return (output << obj._pchar);
-  }
-
- private:
-  void open(void)
-  {
-    File.open(filename, std::ios::app);
-    close();
-  }
-
-  void close(void)
-  {
-    if (File.is_open())
+    void write(const char* s)
     {
-      File.close();
+        std::cout << "Writing: " << s << std::endl;
+        File.open(filename, std::ofstream::out);
+        File << s;
+        close();
     }
-  }
 
-  std::string  _pchar;
-  const char*  filename;
-  std::fstream File;
+    void read_print(void)
+    {
+        std::cout << "Reading: ";
+        File.open(filename, std::ofstream::in);
+        while (true)
+        {
+            if (File.eof())
+            {
+                std::cout << std::endl;
+                break;
+            }
+            File >> _pchar;
+            std::cout << _pchar << " ";
+        }
+        close();
+    }
+
+    void read(void)
+    {
+        File.open(filename, std::ofstream::in);
+        std::string temp;
+        while (true)
+        {
+            if (File.eof())
+            {
+                std::cout << std::endl;
+                break;
+            }
+            File >> temp;
+            _pchar.append(temp);
+            _pchar.append(" ");
+        }
+        close();
+    }
+
+    friend std::ostream& operator<<(std::ostream& output, Foo& obj)
+    {
+        return (output << obj._pchar);
+    }
+
+   private:
+    void open(void)
+    {
+        File.open(filename, std::ios::app);
+        close();
+    }
+
+    void close(void)
+    {
+        if (File.is_open())
+        {
+            File.close();
+        }
+    }
+
+    std::string  _pchar;
+    const char*  filename;
+    std::fstream File;
 };
 
 int main(int argc, char** argv)
 {
-  Foo obj1(FILE_NAME);
+    Foo obj1(FILE_NAME);
 
-  obj1.write("Content written for test");
+    obj1.write("Content written for test");
 
-  // Method 1 for reading and printing
-  // obj1.read_print();
+    // Method 1 for reading and printing
+    // obj1.read_print();
 
-  // Method 2 for reading (with insertion operator overloading)
-  obj1.read();
-  std::cout << "Reading: " << obj1 << std::endl;
+    // Method 2 for reading (with insertion operator overloading)
+    obj1.read();
+    std::cout << "Reading: " << obj1 << std::endl;
 
-  return 0;
+    return 0;
 }

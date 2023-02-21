@@ -9,13 +9,13 @@
 
 float my_div(const int num, const int den)
 {
-  assert(den != 0);
-  return (num / den);
+    assert(den != 0);
+    return (num / den);
 }
 
 int main(int argc, char **argv)
 {
-  my_div(2, 1);
+    my_div(2, 1);
 
-  return 0;
+    return 0;
 }

@@ -10,29 +10,29 @@ namespace my_namespace
 {
 void foo(void)
 {
-  std::cout << "foo function called" << std::endl;
+    std::cout << "foo function called" << std::endl;
 }
 }  // namespace my_namespace
 
 class Foo_c
 {
- public:
-  Foo_c()
-  {
-    std::cout << "Default ctor called" << std::endl;
-  }
+   public:
+    Foo_c()
+    {
+        std::cout << "Default ctor called" << std::endl;
+    }
 
-  void foo(void)
-  {
-    my_namespace::foo();
-  }
+    void foo(void)
+    {
+        my_namespace::foo();
+    }
 };
 
 int main(int argc, char **argv)
 {
-  Foo_c obj1;
+    Foo_c obj1;
 
-  obj1.foo();
+    obj1.foo();
 
-  return 0;
+    return 0;
 }

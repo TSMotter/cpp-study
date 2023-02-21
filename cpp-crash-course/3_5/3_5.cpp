@@ -8,29 +8,29 @@
 
 class Animal
 {
- public:
-  Animal()
-  {
-  }
+   public:
+    Animal()
+    {
+    }
 
-  void Move()
-  {
-    std::cout << "I'm a moving animal" << std::endl;
-  }
+    void Move()
+    {
+        std::cout << "I'm a moving animal" << std::endl;
+    }
 
-  // This method returns a reference to an object,
-  // so yes, it's possible to do foo.method1().method2()
-  Animal &Dummy(void)
-  {
-    return *this;
-  }
+    // This method returns a reference to an object,
+    // so yes, it's possible to do foo.method1().method2()
+    Animal &Dummy(void)
+    {
+        return *this;
+    }
 };
 
 int main(int argc, char **argv)
 {
-  Animal cat;
+    Animal cat;
 
-  cat.Dummy().Move();
+    cat.Dummy().Move();
 
-  return 0;
+    return 0;
 }

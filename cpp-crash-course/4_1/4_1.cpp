@@ -9,34 +9,34 @@
 
 class Foo
 {
- public:
-  Foo()
-  {
-    std::cout << "Default Foo ctor called" << std::endl;
-  }
+   public:
+    Foo()
+    {
+        std::cout << "Default Foo ctor called" << std::endl;
+    }
 
-  ~Foo()
-  {
-    std::cout << "Default Foo dtor called" << std::endl;
-  }
+    ~Foo()
+    {
+        std::cout << "Default Foo dtor called" << std::endl;
+    }
 };
 
 class Bar : public Foo
 {
- public:
-  Bar()
-  {
-    std::cout << "Default Bar ctor called" << std::endl;
-  }
+   public:
+    Bar()
+    {
+        std::cout << "Default Bar ctor called" << std::endl;
+    }
 
-  ~Bar()
-  {
-    std::cout << "Default Bar dtor called" << std::endl;
-  }
+    ~Bar()
+    {
+        std::cout << "Default Bar dtor called" << std::endl;
+    }
 };
 
 int main(int argc, char **argv)
 {
-  Bar baz;
-  return 0;
+    Bar baz;
+    return 0;
 }

@@ -9,29 +9,29 @@
 
 class Singleton
 {
- public:
-  static Singleton *getInstance()
-  {
-    static Singleton INSTANCE;
-    return &INSTANCE;
-  }
+   public:
+    static Singleton *getInstance()
+    {
+        static Singleton INSTANCE;
+        return &INSTANCE;
+    }
 
- private:
-  Singleton()
-  {
-    std::cout << "Default ctor called" << std::endl;
-  }
+   private:
+    Singleton()
+    {
+        std::cout << "Default ctor called" << std::endl;
+    }
 };
 
 int main(int argc, char **argv)
 {
-  Singleton *obj1 = Singleton::getInstance();
-  Singleton *obj2 = Singleton::getInstance();
+    Singleton *obj1 = Singleton::getInstance();
+    Singleton *obj2 = Singleton::getInstance();
 
-  if (obj1 == obj2)
-  {
-    std::cout << "The pointers are equal" << std::endl;
-  }
+    if (obj1 == obj2)
+    {
+        std::cout << "The pointers are equal" << std::endl;
+    }
 
-  return 0;
+    return 0;
 }

@@ -29,57 +29,57 @@
 */
 class Point
 {
- public:
-  /*
-    These static methods are the so-called "named constructors".
-    They will act as 2 constructors options for this class, with parameters,
-    but different names that better tell what they do.
-    They need to be static members so that users can use the method without
-    the need of declaring an object of this class.
-  */
-  // Named constructor for rectangular coordinates
-  static Point rectangular(float x, float y)
-  {
-    return Point(x, y);
-  }
+   public:
+    /*
+      These static methods are the so-called "named constructors".
+      They will act as 2 constructors options for this class, with parameters,
+      but different names that better tell what they do.
+      They need to be static members so that users can use the method without
+      the need of declaring an object of this class.
+    */
+    // Named constructor for rectangular coordinates
+    static Point rectangular(float x, float y)
+    {
+        return Point(x, y);
+    }
 
-  // Named constructor for polar coordinates
-  static Point polar(float radius, float angle)
-  {
-    return Point(radius * std::cos(angle), radius * std::sin(angle));
-  }
+    // Named constructor for polar coordinates
+    static Point polar(float radius, float angle)
+    {
+        return Point(radius * std::cos(angle), radius * std::sin(angle));
+    }
 
-  float getMod()
-  {
-    return (sqrt((x_ * x_) + (y_ * y_)));
-  }
+    float getMod()
+    {
+        return (sqrt((x_ * x_) + (y_ * y_)));
+    }
 
 
- private:
-  /*
-    Default ctor declared as a private member so that no user
-    of the class can access it directly.
-  */
-  Point(float x, float y) : x_(x), y_(y)
-  {
-    std::cout << "Default ctor called" << std::endl;
-  }
+   private:
+    /*
+      Default ctor declared as a private member so that no user
+      of the class can access it directly.
+    */
+    Point(float x, float y) : x_(x), y_(y)
+    {
+        std::cout << "Default ctor called" << std::endl;
+    }
 
-  float x_, y_;
+    float x_, y_;
 };
 
 int main(int argc, char **argv)
 {
-  // Obviously rectangular
-  Point p1 = Point::rectangular(1, 1);
+    // Obviously rectangular
+    Point p1 = Point::rectangular(1, 1);
 
-  // Obviously polar
-  Point p2 = Point::polar(1.414213562373095, 0.785398163397448);
+    // Obviously polar
+    Point p2 = Point::polar(1.414213562373095, 0.785398163397448);
 
-  std::cout << "p1 mod: " << p1.getMod() << std::endl;
-  std::cout << "p2 mod: " << p2.getMod() << std::endl;
+    std::cout << "p1 mod: " << p1.getMod() << std::endl;
+    std::cout << "p2 mod: " << p2.getMod() << std::endl;
 
-  return 0;
+    return 0;
 }
 
 #elif (METHOD == 2)
@@ -89,63 +89,63 @@ int main(int argc, char **argv)
 //  construct
 class PolarPoint
 {
- public:
-  // Default ctor
-  PolarPoint(float radius, float angle)
-      : x_(radius * std::cos(angle)), y_(radius * std::sin(angle))
-  {
-  }
+   public:
+    // Default ctor
+    PolarPoint(float radius, float angle)
+        : x_(radius * std::cos(angle)), y_(radius * std::sin(angle))
+    {
+    }
 
-  float x_, y_;
+    float x_, y_;
 };
 
 class CartPoint
 {
- public:
-  // Default ctor
-  CartPoint(float x, float y) : x_(x), y_(y)
-  {
-  }
+   public:
+    // Default ctor
+    CartPoint(float x, float y) : x_(x), y_(y)
+    {
+    }
 
-  float x_, y_;
+    float x_, y_;
 };
 
 
 //  Define 1 principal class with 2 constructors that refer to the sub classes
 class Point
 {
- public:
-  // Constructor 1 takes a reference to a cartesian coord. as parameter
-  Point(const CartPoint &obj) : x_(obj.x_), y_(obj.y_)
-  {
-    std::cout << "Default CartPoint ctor called" << std::endl;
-  }
+   public:
+    // Constructor 1 takes a reference to a cartesian coord. as parameter
+    Point(const CartPoint &obj) : x_(obj.x_), y_(obj.y_)
+    {
+        std::cout << "Default CartPoint ctor called" << std::endl;
+    }
 
-  // Constructor 2 takes a reference to a polar coord. as parameter
-  Point(const PolarPoint &obj) : x_(obj.x_), y_(obj.y_)
-  {
-    std::cout << "Default PolarPoint ctor called" << std::endl;
-  }
+    // Constructor 2 takes a reference to a polar coord. as parameter
+    Point(const PolarPoint &obj) : x_(obj.x_), y_(obj.y_)
+    {
+        std::cout << "Default PolarPoint ctor called" << std::endl;
+    }
 
-  float getMod()
-  {
-    return (sqrt((x_ * x_) + (y_ * y_)));
-  }
+    float getMod()
+    {
+        return (sqrt((x_ * x_) + (y_ * y_)));
+    }
 
- private:
-  float x_, y_;
+   private:
+    float x_, y_;
 };
 
 int main(int argc, char **argv)
 {
-  // Obviously rectangular
-  Point p1(CartPoint(1, 1));
+    // Obviously rectangular
+    Point p1(CartPoint(1, 1));
 
-  // Obviously polar
-  Point p2(PolarPoint(1.414213562373095, 0.785398163397448));
+    // Obviously polar
+    Point p2(PolarPoint(1.414213562373095, 0.785398163397448));
 
-  std::cout << "p1 mod: " << p1.getMod() << std::endl;
-  std::cout << "p2 mod: " << p2.getMod() << std::endl;
+    std::cout << "p1 mod: " << p1.getMod() << std::endl;
+    std::cout << "p2 mod: " << p2.getMod() << std::endl;
 }
 
 #endif
