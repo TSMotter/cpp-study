@@ -172,7 +172,7 @@ int main(int argc, char* argv[])
 
     /* ----> This is a copy list initialization.
 
-    In this case, it'll behave the same as the cases above, the constructor that will end up being 
+    In this case, it'll behave the same as the cases above, the constructor that will end up being
     used depends on the type of "f". It it's a "Foo" object, just 1 default constructor is called.
     If it is an "int", then the std::initializer_list<int> constructor is called, since "Foo" has a
     specific constructor for that.
