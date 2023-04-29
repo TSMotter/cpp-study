@@ -9,5 +9,4 @@ echo "Running clang-formatter..."
 # xargs executes echo by default. You many also instruct it to read data from a file 
 # instead of stdin.
 
-find . -iname '*.cpp' | xargs clang-format -i -style=file
-
+find . -iname '*.*pp' | grep --invert-match './build' | xargs clang-format -i -style=file
