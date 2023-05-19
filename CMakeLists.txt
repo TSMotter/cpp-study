@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(my_cpp)
 
-# Set the C++ standard to C++14
 set(CMAKE_CXX_STANDARD 14)
 
 # Variable TARGET_GROUP should be passed as an argument when calling cmake

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source cclang-formatter.sh
+source format.sh $1
 
 rm -rf build
 cmake -S . -B build -D TARGET_GROUP=$1
