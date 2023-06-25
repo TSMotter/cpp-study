@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
     declaration [-Wvexing-parse]
 
     This is a pre-modern C++ pitfall: At first glance, it may look like just another variable
-    declaration calling a default construconstructor Foo::Foo(); in reality, thanks to a grammar
+    declaration calling a default constructor Foo::Foo(); in reality, thanks to a grammar
     ambiguity, it’s a function declaration for a function named "foo", that takes no parameters and
     returns a "Foo" object by value.
 
@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
     /* ----> This is a default initialization.
     Note that "obj" is not initialized and contains garbage values if Foo happens to be a built-in
     type like "int", or a simple “int-like” class type with what’s called a “trivial” default
-    construconstructor (a type that relies on the compiler-generated default construconstructor),
+    constructor (a type that relies on the compiler-generated default constructor),
     has no virtual functions or virtual base classes or data member initializers, and all its bases
     and members satisfy the same restrictions
     Foo obj;
@@ -151,7 +151,8 @@ int main(int argc, char* argv[])
     that’s just a syntax holdover from C, not an assignment operation.
 
     In this case, "d" is the same type of "d1", so:
-    "Foo d1 = d;" is equivalent to "Foo d1(d);" In both cases, only 1 default constructor is called
+    "Foo d1 = d;" is equivalent to "Foo d1(d);" In both cases, 1 default constructor is called
+    (the used to construct "d") and 1 copy/move constructor (for "d1").
     Foo d{};
     Foo d1 = d;
     */
@@ -161,7 +162,7 @@ int main(int argc, char* argv[])
     /* ----> This is also a copy initialization.
 
     In this case, "e" is a different type of "e1", so:
-    "Foo e1 = e;" is equivalent to "Foo e1(Foo(e));", which uses de constructor with an int param.
+    "Foo e1 = e;" is equivalent to "Foo e1(Foo(e));", which uses the constructor with an int param.
 
     It is possible that a move constructor gets used in this kind of situation.
     int e  = 8;
@@ -173,7 +174,7 @@ int main(int argc, char* argv[])
     /* ----> This is a copy list initialization.
 
     In this case, it'll behave the same as the cases above, the constructor that will end up being
-    used depends on the type of "f". It it's a "Foo" object, just 1 default constructor is called.
+    used depends on the type of "f". If it's a "Foo" object, just 1 default constructor is called.
     If it is an "int", then the std::initializer_list<int> constructor is called, since "Foo" has a
     specific constructor for that.
     */
