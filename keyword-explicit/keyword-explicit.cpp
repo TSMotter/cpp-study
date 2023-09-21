@@ -54,6 +54,7 @@ int main(int argc, char **argv)
 
     /* To avoid this implicit construction, we should mark que constructor "explicit" */
     ComplexExpl com_expl(5.0, 0.0);
+
     // THIS IS A COMPILATION ERROR:
     // if (com_expl == 5.0)
     //{

@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(initializations initializations.cpp)
+add_executable(main initializations.cpp)

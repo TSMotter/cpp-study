@@ -2,11 +2,13 @@
 
 #include <iostream>
 
-/* Checking the differences between:
+/*
+Checking the differences between:
     default initialization
     direct initialization
     copy initialization
-    list initialization */
+    list initialization
+*/
 
 class Bar
 {
@@ -14,6 +16,12 @@ class Bar
     Bar()
     {
         std::cout << "Bar default constructor" << std::endl;
+    }
+
+    Bar(const Bar& other)
+    {
+        m_char = other.m_char;
+        std::cout << "Bar copy constructor" << std::endl;
     }
 
     Bar(char ch) : m_char(ch)
@@ -88,9 +96,9 @@ int main(int argc, char* argv[])
     returns a "Foo" object by value.
 
     "if it can be a function declaration, it is."
-    Foo foo();
-    Foo foo(Bar());
     */
+    // Foo foo();
+    // Foo foo(Bar());
 
     // ---------------------------------------------------------------------------------------------
 
@@ -100,16 +108,17 @@ int main(int argc, char* argv[])
     constructor (a type that relies on the compiler-generated default constructor),
     has no virtual functions or virtual base classes or data member initializers, and all its bases
     and members satisfy the same restrictions
-    Foo obj;
     */
+    // Foo obj;
 
     // ---------------------------------------------------------------------------------------------
 
     /* ----> This is a direct initialization.
-    Assuming "a" is not the name of a type (ie: int)
-    int a = 2;
-    Foo a1(a);
+    Assuming "a" is not the name of a type - that is: "Foo a1(int);" would be a function declaration
+    This is because "a1" is initialized directly from the value of "a"
     */
+    // int a = 2;
+    // Foo a1(a);
 
     // ---------------------------------------------------------------------------------------------
 
@@ -118,27 +127,33 @@ int main(int argc, char* argv[])
 
     Even in the case of "Meme" class, that has a constructor that accepts a std::initializer_list
     as parameter, when defining "b1", the default constructor is called, because {} is empty
-    Foo  b{};
-    Meme b1{};
     */
+    // Foo  b{};
+    // Meme b1{};
 
     // ---------------------------------------------------------------------------------------------
 
-    /* ----> This is once again a direct initialization.
+    /* ----> This is a direct initialization.
     Because "Meme" class has a constructor that accepts a std::initializer_list as parameter and I'm
     passing a non empty std::initializer_list as parameter, that constructor is prefered
-    int  c = 2;
-    Meme c1{c};
     */
+    // int  c = 2;
+    // Meme c1{c};
 
     // ---------------------------------------------------------------------------------------------
 
-    /* ----> The syntax with "{}" is also prefered over the "()" because it prevents narrowing
-    // Compiles: but you toss away the .345
-    int i1(12.345);
-    // Error: would be lossy implicit narrowing
-    int i2{12.345};
+    /* ----> This is a direct initialization.
+    But this time copy constructor is called to construct c3
     */
+    // Bar c2{};
+    // Bar c3{c2};
+
+    // ---------------------------------------------------------------------------------------------
+
+    /* ----> The syntax with "{}" is also prefered over the "()" because it prevents narrowing */
+
+    // int i1(12.345); // Compiles: but you toss away the .345
+    // int i2{12.345}; // Error: would be lossy implicit narrowing
 
     // ---------------------------------------------------------------------------------------------
 
@@ -153,9 +168,9 @@ int main(int argc, char* argv[])
     In this case, "d" is the same type of "d1", so:
     "Foo d1 = d;" is equivalent to "Foo d1(d);" In both cases, 1 default constructor is called
     (the used to construct "d") and 1 copy/move constructor (for "d1").
-    Foo d{};
-    Foo d1 = d;
     */
+    // Foo d{};
+    // Foo d1 = d;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -165,9 +180,9 @@ int main(int argc, char* argv[])
     "Foo e1 = e;" is equivalent to "Foo e1(Foo(e));", which uses the constructor with an int param.
 
     It is possible that a move constructor gets used in this kind of situation.
-    int e  = 8;
-    Foo e1 = e;
     */
+    // int e  = 8;
+    // Foo e1 = e;
 
     // ---------------------------------------------------------------------------------------------
 
@@ -179,6 +194,6 @@ int main(int argc, char* argv[])
     specific constructor for that.
     */
     // Foo f{};
-    int f  = 8;
-    Foo f1 = {f};
+    // int f  = 8;
+    // Foo f1 = {f};
 }

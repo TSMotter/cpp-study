@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(oop-basics oop-basics.cpp)
+add_executable(main oop-basics.cpp)

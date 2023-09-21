@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(reference reference.cpp)
+add_executable(main reference.cpp)

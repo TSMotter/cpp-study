@@ -1,1 +1,1 @@
-add_executable(2_1 2_1.cpp)
+add_executable(main 2_1.cpp)

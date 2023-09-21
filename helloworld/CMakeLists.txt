@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(helloworld helloworld.cpp)
+add_executable(main helloworld.cpp)

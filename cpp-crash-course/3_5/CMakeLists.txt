@@ -1,1 +1,1 @@
-add_executable(3_5 3_5.cpp)
+add_executable(main 3_5.cpp)

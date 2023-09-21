@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(stdmap stdmap.cpp)
+add_executable(main stdmap.cpp)

@@ -22,6 +22,6 @@
 - Can be assigned to the value of a shared_ptr
 - It doesn't increase the `reference counter`, 
 - Great when you don't want to take ownership of the object
-  - It wount keep the object alive for longer
+  - It will not keep the object alive for longer
   - Ex: when you just want to store a reference of something
 - It can point to some expired object

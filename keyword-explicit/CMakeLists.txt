@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(keyword-explicit keyword-explicit.cpp)
+add_executable(main keyword-explicit.cpp)

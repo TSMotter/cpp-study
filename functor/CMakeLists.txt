@@ -1,2 +1,2 @@
 # Creates a binary target
-add_executable(functor functor.cpp)
+add_executable(main functor.cpp)

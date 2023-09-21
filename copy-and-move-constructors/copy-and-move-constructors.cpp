@@ -34,18 +34,19 @@ std::ostream& operator<<(std::ostream& output, MyClass const& that)
 
 int main()
 {
-    MyClass obj1{};
+    MyClass obj1{};  // Default constructor
     obj1.data = new int(42);
-    std::cout << obj1;
+    std::cout << "This is obj1: " << obj1;
 
     MyClass obj2{obj1};  // Copy constructor
-    std::cout << obj1;
-    std::cout << obj2;
+    std::cout << "This is obj1: " << obj1;
+    std::cout << "This is obj2: " << obj2;
 
     MyClass obj3{std::move(obj2)};  // Invokes the move constructor;
-    std::cout << obj1;
-    std::cout << obj2;
-    std::cout << obj3;
+    std::cout << "This is obj1: " << obj1;
+    // std::cout << "This is obj2: " << obj2; // This would be a segfault because obj2 no longer
+    // 'exists'
+    std::cout << "This is obj3: " << obj3;
 
     delete obj3.data;  // Clean up the data
 
