@@ -1,0 +1,1 @@
+add_executable(main 2-1-input-output.cpp)

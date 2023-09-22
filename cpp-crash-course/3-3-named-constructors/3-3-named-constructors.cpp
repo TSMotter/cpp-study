@@ -51,7 +51,7 @@ class Point
 
     float getMod()
     {
-        return (sqrt((x_ * x_) + (y_ * y_)));
+        return (sqrt((m_x * m_x) + (m_y * m_y)));
     }
 
 
@@ -60,12 +60,12 @@ class Point
       Default ctor declared as a private member so that no user
       of the class can access it directly.
     */
-    Point(float x, float y) : x_(x), y_(y)
+    Point(float x, float y) : m_x(x), m_y(y)
     {
         std::cout << "Default ctor called" << std::endl;
     }
 
-    float x_, y_;
+    float m_x, m_y;
 };
 
 int main(int argc, char **argv)
@@ -92,22 +92,22 @@ class PolarPoint
    public:
     // Default ctor
     PolarPoint(float radius, float angle)
-        : x_(radius * std::cos(angle)), y_(radius * std::sin(angle))
+        : m_x(radius * std::cos(angle)), m_y(radius * std::sin(angle))
     {
     }
 
-    float x_, y_;
+    float m_x, m_y;
 };
 
 class CartPoint
 {
    public:
     // Default ctor
-    CartPoint(float x, float y) : x_(x), y_(y)
+    CartPoint(float x, float y) : m_x(x), m_y(y)
     {
     }
 
-    float x_, y_;
+    float m_x, m_y;
 };
 
 
@@ -116,24 +116,24 @@ class Point
 {
    public:
     // Constructor 1 takes a reference to a cartesian coord. as parameter
-    Point(const CartPoint &obj) : x_(obj.x_), y_(obj.y_)
+    Point(const CartPoint &obj) : m_x(obj.m_x), m_y(obj.m_y)
     {
         std::cout << "Default CartPoint ctor called" << std::endl;
     }
 
     // Constructor 2 takes a reference to a polar coord. as parameter
-    Point(const PolarPoint &obj) : x_(obj.x_), y_(obj.y_)
+    Point(const PolarPoint &obj) : m_x(obj.m_x), m_y(obj.m_y)
     {
         std::cout << "Default PolarPoint ctor called" << std::endl;
     }
 
     float getMod()
     {
-        return (sqrt((x_ * x_) + (y_ * y_)));
+        return (sqrt((m_x * m_x) + (m_y * m_y)));
     }
 
    private:
-    float x_, y_;
+    float m_x, m_y;
 };
 
 int main(int argc, char **argv)
