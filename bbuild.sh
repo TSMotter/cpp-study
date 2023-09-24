@@ -28,7 +28,7 @@ function print_help()
     -v, --verbose       [v]erbose
 
     targets:
-     <target> is a positional argument. Either "app" of "test"
+     <target> is a positional argument. It should be one of the buildable targets (folders)
 EOF
 
     return 0

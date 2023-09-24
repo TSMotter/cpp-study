@@ -11,28 +11,28 @@
 class ItoA
 {
    public:
-    ItoA(int x) : _value(x)
+    ItoA(int value) : m_i(value)
     {
-        std::cout << "IntToAscii ctor called" << std::endl;
+        std::cout << "ItoA constructor" << std::endl;
     }
 
     friend std::ostream& operator<<(std::ostream& output, ItoA const& that)
     {
-        return output << that._string;
+        return output << that.m_a;
     }
     friend std::istream& operator>>(std::istream& input, ItoA& foo)
     {
-        return input >> foo._value;
+        return input >> foo.m_i;
     }
 
     int _itoa()
     {
-        return sprintf(_string, "%d", _value);
+        return sprintf(m_a, "%d", m_i);
     }
 
    private:
-    int  _value;
-    char _string[20];
+    int  m_i;
+    char m_a[20];
 };
 
 class AtoI
@@ -40,26 +40,26 @@ class AtoI
    public:
     AtoI()
     {
-        std::cout << "AsciiToInt ctor called" << std::endl;
+        std::cout << "AtoI constructor" << std::endl;
     }
 
     friend std::ostream& operator<<(std::ostream& output, AtoI const& that)
     {
-        return output << that._value;
+        return output << that.m_i;
     }
     friend std::istream& operator>>(std::istream& input, AtoI& foo)
     {
-        return input >> foo._string;
+        return input >> foo.m_a;
     }
 
     void _atoi()
     {
-        _value = atoi(_string);
+        m_i = atoi(m_a);
     }
 
    private:
-    int  _value;
-    char _string[20];
+    int  m_i;
+    char m_a[20];
 };
 
 int main(int argc, char** argv)

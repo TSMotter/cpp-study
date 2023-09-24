@@ -7,7 +7,7 @@
 #include <iostream>
 #include <exception>
 
-class ctor_exception : public std::exception
+class ConstructorException : public std::exception
 {
    public:
     /*
@@ -16,22 +16,23 @@ class ctor_exception : public std::exception
 
       The throw() at the end of the function declaration is called exception
       specification. It's purpose is to specify what kind of exception can come
-      out of this method. In this case, throw() says that this methos will throw
+      out of this method. In this case, throw() says that this method will throw
       nothing (this method does not throw any exception)
     */
     virtual const char *what() const throw()
     {
         return "A constructor exception happened";
     }
-} ctor_exc;
+} ConstructorExc; /* This line creates a single instance of the ConstructorException class named
+                  ConstructorExc */
 
-class Foo_c
+class Foo
 {
    public:
-    Foo_c()
+    Foo()
     {
-        std::cout << "Default ctor called and will throw exception" << std::endl;
-        throw(ctor_exc);
+        std::cout << "Foo default constructor will throw exception" << std::endl;
+        throw(ConstructorExc);
     }
 };
 
@@ -39,11 +40,11 @@ int main(int argc, char **argv)
 {
     try
     {
-        Foo_c obj1;
+        Foo obj1;
     }
-    // This handler catches an exception by reference, meaning that this also
-    // catches classes derived from std::exception
-    catch (ctor_exception &err)
+    /* This handler catches an exception by reference, meaning that this also catches classes
+     * derived from std::exception */
+    catch (ConstructorException &err)
     {
         std::cout << err.what() << std::endl;
     }
